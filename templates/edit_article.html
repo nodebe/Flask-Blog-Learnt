@@ -1,0 +1,21 @@
+{% extends 'layouts.html' %}
+ {% block body %}
+<div class="row">
+    <div class="col-md-12 col-md-push-3">
+        <h2>Edit Post</h2>
+        <hr> {% from 'includes/_formhelpers.html' import render_field %}
+        <form method="POST" action="">
+            <div>
+                <div class="form-group">
+                    {{render_field(form.title, class_='form-control')}}
+                </div>
+                <div class="form-group">
+                    {{render_field(form.body, class_='form-control', id="editor")}}
+                </div>
+                <p>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </p>
+        </form>
+        </div>
+    </div>
+    {% endblock %}

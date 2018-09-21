@@ -1,0 +1,16 @@
+{% extends 'layouts.html' %} 
+{% block body %}
+<div class="col-md-12 col-md-push-3">
+            <h3>{{article.title}}</h3>
+        <p align='justify'>{{article.body | safe}}</p>
+        <footer class="small text-muted">Posted by {{article.author}} on {{article.date}}</footer><br>
+    {% if session.logged_in %}
+        <div style="margin-left:-2%">
+            <a href="/edit_article/{{article.id}}" class="btn btn-primary">Edit Article</a>
+            <form method="POST" action="/delete_article/{{article.id}}" class="col-md-2">
+                <input type="submit" value="Delete Article" class="btn btn-danger">
+            </form>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

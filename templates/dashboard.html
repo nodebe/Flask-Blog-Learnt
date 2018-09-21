@@ -1,0 +1,22 @@
+{% extends 'layouts.html' %}
+{% block body %}
+    <div class="col-md-12 col-md-push-3">
+        <h3>Welcome, {{session.username}}</h3><hr>
+        <a href="/add_article" class="btn btn-success">
+            New article +</a>
+        <hr>
+            {% for post in posts %}
+            <div class="well">
+                <a href='/article/{{post.id}}'><h3>{{post.title}}</h3></a>
+                    <p align='justify'>{{post.body[:500] | safe}}...<a href="/article/{{post.id}}">Read more</a></p>
+                    <footer class="small text-muted">Posted by {{post.author}} on {{post.date}}</footer><br>
+                    <div style="margin-left:-2%">
+                    <a href="/edit_article/{{post.id}}" class="btn btn-primary">Edit Article</a>
+                        <form method="POST" action="/delete_article/{{post.id}}" class="col-md-2">
+                    <input type="submit" value="Delete Article" class="btn btn-danger">
+                    </form>
+                    </div>
+            </div>
+            {% endfor %}
+    </div>
+{% endblock %}

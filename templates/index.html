@@ -1,0 +1,25 @@
+{% extends 'layouts.html' %}
+{% block intro %}
+<div class="container">
+    <div class="jumbotron col-md-12">
+        <h1 align='center'>FLASK BLOG</h1>
+        <hr>
+        <p align='center'>The blog you have been waiting for</p>
+    </div>
+    </div>
+    <div class="col-md-8 col-md-push-2">
+        {% for post in posts %}
+        <div class="well">
+            <a href='/article/{{post.id}}'>
+                <h3>{{post.title}}</h3>
+            </a>
+            <p align='justify'>{{post.body[:500] | safe}}...<a href="/article/{{post.id}}">Read more</a></p>
+            <footer class="small text-muted">Posted by {{post.author}} on {{post.date}}</footer>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock intro %}
+{% block body %}
+    
+{% endblock %}
